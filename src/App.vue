@@ -1,30 +1,60 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="container">
+    <nav>
+      <Header class="header" />
+      <router-link to="/">
+        <button class="linked-item">Home</button>
+      </router-link>
+    </nav>
+    <router-view />
+    <footer>
+      Copywrite &copy; 2022
+    </footer>
+  </div>
 </template>
 
+<script>
+import Header from './components/Header.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  body {
+    background-color: black;
+    color: white;
+  }
 
-nav {
-  padding: 30px;
-}
+  .container {
+    margin: 20px;
+  }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  nav h1 {
+    color: white;
+  }
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .link-items {
+    flex: 0.5;
+  }
+
+  .header {
+    flex: 1;
+  }
+
+  footer {
+    margin-top: 50px;
+    text-align: center;
+  }
 </style>

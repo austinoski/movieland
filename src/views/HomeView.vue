@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Search @search="searchMovie" />
+  <Movies :movies="movies" />
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Search from '../components/Search.vue'
+import Movies from '../components/Movies.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    Search,
+    Movies
+  },
+  data() {
+    return {
+        movies: [],
+        API_URL: 'http://www.omdbapi.com?apikey=11fb7995',
+        default: "Harry Potter"
+    }
+  },
+  methods: {
+    async searchMovie(title) {
+      const response = await fetch(`${this.API_URL}&s=${title}`)
+    const data = await response.json()
+    this.movies = data.Search
+    console.log(data.Search)
+    }
+  },
+  async created(){
+    const response = await fetch(`${this.API_URL}&s=${this.default}`)
+    const data = await response.json()
+    this.movies = data.Search
   }
 }
 </script>
