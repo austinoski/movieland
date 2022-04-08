@@ -16,7 +16,7 @@ export default {
   data() {
     return {
         movies: [],
-        API_URL: 'http://www.omdbapi.com?apikey=11fb7995',
+        API_URL: 'https://www.omdbapi.com?apikey=11fb7995',
         default: "Harry Potter"
     }
   },
